@@ -1,0 +1,341 @@
+
+/* ==============================
+   GET QUOTE PAGE
+============================== */
+
+.gt-quote-page {
+  width: 100%;
+  min-height: 75vh;
+  padding: 70px 20px 90px;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+/* ==============================
+   FORM CONTAINER / BORDER CARD
+============================== */
+
+.gt-quote-container {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 45px 45px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border: 1px solid #dce9dc;
+  border-radius: 16px;
+
+  box-shadow: 0 8px 30px rgba(40, 80, 50, 0.08);
+}
+
+/* ==============================
+   HEADER
+============================== */
+
+.gt-quote-header {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.gt-quote-icon {
+  display: block;
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.gt-quote-label {
+  display: inline-block;
+  color: #75a879;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.gt-quote-header h1 {
+  color: #26382a;
+  font-size: 34px;
+  font-weight: 600;
+  margin: 12px 0;
+}
+
+.gt-quote-header p {
+  color: #777;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ==============================
+   FORM
+============================== */
+
+.gt-quote-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+}
+
+/* Individual Form Fields */
+
+.gt-form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.gt-form-group label {
+  color: #26382a;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.gt-form-group label span {
+  color: #e14b4b;
+}
+
+/* Input and Textarea */
+
+.gt-form-group input,
+.gt-form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 15px 16px;
+
+  border: 1px solid #dce3dc;
+  border-radius: 8px;
+
+  outline: none;
+
+  font-family: inherit;
+  font-size: 15px;
+  color: #333;
+
+  background: #ffffff;
+
+  transition: all 0.25s ease;
+}
+
+.gt-form-group input {
+  min-height: 52px;
+}
+
+.gt-form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* Input Focus */
+
+.gt-form-group input:focus,
+.gt-form-group textarea:focus {
+  border-color: #7db680;
+  box-shadow: 0 0 0 3px rgba(125, 182, 128, 0.12);
+}
+
+/* Placeholder */
+
+.gt-form-group input::placeholder,
+.gt-form-group textarea::placeholder {
+  color: #a0a0a0;
+}
+
+/* ==============================
+   SUBMIT BUTTON
+============================== */
+
+.gt-submit-button {
+  width: 100%;
+  min-height: 54px;
+
+  padding: 15px 20px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #7db680;
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  transition: all 0.3s ease;
+}
+
+.gt-submit-button:hover {
+  background: #639e68;
+  transform: translateY(-2px);
+}
+
+.gt-submit-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ==============================
+   FORM MESSAGE
+============================== */
+
+.gt-form-message {
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.gt-form-error {
+  color: #d33;
+}
+
+/* ==============================
+   SUCCESS MESSAGE
+============================== */
+
+.gt-success-message {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.gt-success-icon {
+  width: 70px;
+  height: 70px;
+
+  margin: 0 auto 20px;
+
+  background: #e4f5e5;
+  color: #5caa65;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 36px;
+}
+
+.gt-success-message h2 {
+  color: #376d3d;
+  font-size: 30px;
+}
+
+.gt-success-message p {
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.gt-success-message .gt-submit-button {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* ==============================
+   SPAM PROTECTION
+============================== */
+
+.gt-honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+}
+
+/* ==============================
+   TABLET RESPONSIVE
+============================== */
+
+@media (max-width: 768px) {
+
+  .gt-quote-page {
+    padding: 45px 20px 60px;
+  }
+
+  .gt-quote-container {
+    padding: 32px 25px;
+    border-radius: 12px;
+  }
+
+  .gt-quote-header {
+    margin-bottom: 30px;
+  }
+
+  .gt-quote-header h1 {
+    font-size: 28px;
+  }
+
+  .gt-quote-header p {
+    font-size: 14px;
+  }
+
+  .gt-quote-form {
+    gap: 20px;
+  }
+
+  .gt-form-group input,
+  .gt-form-group textarea {
+    padding: 13px;
+    font-size: 14px;
+  }
+
+  .gt-form-group input {
+    min-height: 48px;
+  }
+
+  .gt-submit-button {
+    min-height: 50px;
+    font-size: 15px;
+  }
+}
+
+/* ==============================
+   MOBILE RESPONSIVE
+============================== */
+
+@media (max-width: 480px) {
+
+  .gt-quote-page {
+    padding: 35px 15px 50px;
+  }
+
+  .gt-quote-container {
+    padding: 25px 17px;
+    border-radius: 12px;
+  }
+
+  .gt-quote-header h1 {
+    font-size: 25px;
+  }
+
+  .gt-quote-icon {
+    font-size: 30px;
+  }
+
+  .gt-quote-header p {
+    font-size: 13px;
+  }
+
+  .gt-form-group label {
+    font-size: 14px;
+  }
+
+  .gt-form-group textarea {
+    min-height: 120px;
+  }
+
+  .gt-success-message {
+    padding: 35px 10px;
+  }
+}

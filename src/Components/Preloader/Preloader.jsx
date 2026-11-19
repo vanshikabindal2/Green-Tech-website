@@ -24,7 +24,7 @@ export default function Preloader() {
       if (p < 1) {
         raf = requestAnimationFrame(tick);
       } else {
-        timers.push(setTimeout(() => setOut(true), 500)); // parda upar jaye
+        timers.push(setTimeout(() => setOut(true), 500)); 
         timers.push(
           setTimeout(() => {
             setShow(false);

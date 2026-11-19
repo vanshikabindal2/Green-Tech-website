@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import Preloader from "./Components/Preloader/Preloader";
 
 import Scroll from "./Components/Scroll/Scroll";
 import Navbar from "./Components/Navbar/Navbar";
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <>
+          <Preloader />
       <Navbar />
       <Butterfly />
       <Scroll />

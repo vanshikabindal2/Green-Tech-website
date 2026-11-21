@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Preloader from "./Components/Preloader/Preloader";
@@ -14,14 +13,13 @@ import Products from "./Pages/Products/Products";
 import Service from "./Pages/Service/Service";
 import Getquote from "./Pages/GetQuote/Getquote";
 import Gallery from "./Pages/Gallery/Gallery";
+
 function App() {
   const location = useLocation();
 
-  const hideFooter = location.pathname === "/getquote";
-
   return (
     <>
-          <Preloader />
+      <Preloader />
       <Navbar />
       <Butterfly />
       <Scroll />
@@ -36,7 +34,7 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
       </Routes>
 
-      {!hideFooter && <Footer />}
+      <Footer />
     </>
   );
 }

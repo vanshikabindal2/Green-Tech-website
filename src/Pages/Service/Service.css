@@ -751,3 +751,52 @@
 .gt-quote-button span {
   text-decoration: none !important;
 }
+/* ===== GAP KAM KARNE KE LIYE ===== */
+
+/* Hero section: upar aur neeche ka padding */
+.gt-service-hero {
+  padding: 30px 20px 35px;       /* pehle 75px 20px 65px */
+}
+
+/* Heading ke upar/neeche */
+.gt-service-hero h1 {
+  margin: 15px 0 12px;           /* pehle 27px 0 20px */
+  line-height: 1.1;
+}
+
+/* Category cards ke upar */
+.gt-category-list {
+  margin-top: 28px;              /* pehle 55px */
+}
+
+/* Product section ka upar aur neeche ka padding */
+.gt-service-products {
+  padding: 35px 0 50px;          /* pehle 65px 0 85px */
+}
+
+.gt-products-heading {
+  margin-bottom: 22px;           /* pehle 35px */
+}
+
+/* Bottom CTA ke upar */
+.gt-service-bottom {
+  margin-top: 35px;              /* pehle 60px */
+}
+
+@media (max-width: 768px) {
+  .gt-service-hero {
+    padding: 25px 18px 30px;
+  }
+  .gt-service-products {
+    padding: 30px 0 40px;
+  }
+}
+
+@media (max-width: 500px) {
+  .gt-service-hero {
+    padding: 25px 15px 30px;
+  }
+  .gt-category-list {
+    margin-top: 22px;
+  }
+}

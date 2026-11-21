@@ -1,186 +1,4 @@
 
-// import React, { useEffect, useRef, useState } from "react";
-// import "./Gallery.css";
-
-// import outdoorwall from "../../assets/outdoorwall.jpg";
-// import indoorwall from "../../assets/indoorwall.jpg";
-// import pvcplanter from "../../assets/pvcplanter.jpg";
-// import greenwall from "../../assets/greenwall.jpg";
-// import biopanel from "../../assets/biopanel.jpg";
-// import artificialgrass from "../../assets/artificialgrass.jpg";
-
-// const projects = [
-//   {
-//     id: 1,
-//     image: outdoorwall,
-//     title: "Vertical Outdoor Wall Garden",
-//     plants: "petunia, verbena, bacopa",
-//   },
-//   {
-//     id: 2,
-//     image: indoorwall,
-//     title: "Indoor Living Wall",
-//     plants: "pothos, philodendron, ferns",
-//   },
-//   {
-//     id: 3,
-//     image: pvcplanter,
-//     title: "Vertical Indoor Wall Garden",
-//     plants: "monstera, scindapsus, syngonium",
-//   },
-//   {
-//     id: 4,
-//     image: greenwall,
-//     title: "Modern Green Wall",
-//     plants: "ferns, pothos, peace lily",
-//   },
-//   {
-//     id: 5,
-//     image: biopanel,
-//     title: "Outdoor Vertical Garden",
-//     plants: "succulents, ivy, herbs",
-//   },
-//   {
-//     id: 6,
-//     image: artificialgrass,
-//     title: "Decorative Green Wall",
-//     plants: "areca, fern, philodendron",
-//   },
-// ];
-
-// const Gallery = () => {
-//   const sliderRef = useRef(null);
-//   const [currentIndex, setCurrentIndex] = useState(0);
-//   const [visible, setVisible] = useState(3);
-//   const [paused, setPaused] = useState(false);
-
-//   const maxIndex = projects.length - visible;
-
-//   // Responsive cards
-//   useEffect(() => {
-//     const updateVisible = () => {
-//       if (window.innerWidth <= 600) {
-//         setVisible(1);
-//       } else if (window.innerWidth <= 900) {
-//         setVisible(2);
-//       } else {
-//         setVisible(3);
-//       }
-//     };
-
-//     updateVisible();
-//     window.addEventListener("resize", updateVisible);
-
-//     return () => window.removeEventListener("resize", updateVisible);
-//   }, []);
-
-//   // Infinite automatic slider
-//   useEffect(() => {
-//     if (paused) return;
-
-//     const timer = setInterval(() => {
-//       setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-//     }, 3500);
-
-//     return () => clearInterval(timer);
-//   }, [maxIndex, paused]);
-
-//   // Slider movement
-//   useEffect(() => {
-//     if (!sliderRef.current) return;
-
-//     const firstCard = sliderRef.current.children[0];
-//     if (!firstCard) return;
-
-//     const gap =
-//       parseFloat(window.getComputedStyle(sliderRef.current).gap) || 0;
-
-//     const cardWidth = firstCard.offsetWidth;
-
-//     sliderRef.current.style.transform =
-//       `translateX(-${currentIndex * (cardWidth + gap)}px)`;
-//   }, [currentIndex, visible]);
-
-//   const nextSlide = () => {
-//     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-//   };
-
-//   const prevSlide = () => {
-//     setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
-//   };
-
-//   return (
-//     <section className="projects-section">
-//       <div className="projects-container">
-
-//         <div className="projects-heading">
-//           <h1>Our Latest Projects</h1>
-//           <p>
-//             Showcase of beautiful green walls we've created
-//             for homes and businesses.
-//           </p>
-//         </div>
-
-//         <div
-//           className="projects-slider-wrapper"
-//           onMouseEnter={() => setPaused(true)}
-//           onMouseLeave={() => setPaused(false)}
-//           onTouchStart={() => setPaused(true)}
-//           onTouchEnd={() => setPaused(false)}
-//         >
-//           <div className="projects-slider-window">
-//             <div className="projects-slider" ref={sliderRef}>
-//               {projects.map((project) => (
-//                 <div className="project-slide" key={project.id}>
-//                   <div className="project-image">
-//                     <img src={project.image} alt={project.title} />
-//                   </div>
-
-//                   <div className="project-info">
-//                     <h3>{project.title}</h3>
-//                     <p>Plant name :- {project.plants}</p>
-//                   </div>
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-
-//           <button
-//             className="project-arrow project-prev"
-//             onClick={prevSlide}
-//             aria-label="Previous project"
-//           >
-//             &#10094;
-//           </button>
-
-//           <button
-//             className="project-arrow project-next"
-//             onClick={nextSlide}
-//             aria-label="Next project"
-//           >
-//             &#10095;
-//           </button>
-//         </div>
-
-//         <div className="projects-dots">
-//           {Array.from({ length: maxIndex + 1 }).map((_, index) => (
-//             <button
-//               key={index}
-//               className={`project-dot ${
-//                 currentIndex === index ? "active" : ""
-//               }`}
-//               onClick={() => setCurrentIndex(index)}
-//               aria-label={`Go to slide ${index + 1}`}
-//             />
-//           ))}
-//         </div>
-
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Gallery;
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -198,12 +16,12 @@ import artificialgrass from "../../assets/artificialgrass.jpg";
 gsap.registerPlugin(useGSAP, ScrollTrigger, Draggable);
 
 const projects = [
-  { id: 1, image: outdoorwall, title: "Vertical Outdoor Wall Garden", plants: "petunia, verbena, bacopa" },
-  { id: 2, image: indoorwall, title: "Indoor Living Wall", plants: "pothos, philodendron, ferns" },
-  { id: 3, image: pvcplanter, title: "Vertical Indoor Wall Garden", plants: "monstera, scindapsus, syngonium" },
-  { id: 4, image: greenwall, title: "Modern Green Wall", plants: "ferns, pothos, peace lily" },
-  { id: 5, image: biopanel, title: "Outdoor Vertical Garden", plants: "succulents, ivy, herbs" },
-  { id: 6, image: artificialgrass, title: "Decorative Green Wall", plants: "areca, fern, philodendron" },
+  { id: 1, image: outdoorwall, title: "Vertical Outdoor Wall Garden"},
+  { id: 2, image: indoorwall, title: "Indoor Living Wall"},
+  { id: 3, image: pvcplanter, title: "Vertical Indoor Wall Garden"},
+  { id: 4, image: greenwall, title: "Modern Green Wall"  },
+  { id: 5, image: biopanel, title: "Outdoor Vertical Garden"  },
+  { id: 6, image: artificialgrass, title: "Decorative Green Wall" },
 ];
 
 const AUTOPLAY_SECONDS = 3.5;
@@ -419,41 +237,41 @@ const Gallery = () => {
   );
 
   /* ---------- 4: DRAG TO SWIPE (snap) ---------- */
-  useEffect(() => {
-    const el = sliderRef.current;
-    if (!el) return;
+  // useEffect(() => {
+  //   const el = sliderRef.current;
+  //   if (!el) return;
 
-    const gap = parseFloat(getComputedStyle(el).gap) || 0;
-    const step = el.children[0].offsetWidth + gap;
-    const max = projects.length - visible;
+  //   const gap = parseFloat(getComputedStyle(el).gap) || 0;
+  //   const step = el.children[0].offsetWidth + gap;
+  //   const max = projects.length - visible;
 
-    const [drag] = Draggable.create(el, {
-      type: "x",
-      bounds: { minX: -max * step, maxX: 0 },
-      edgeResistance: 0.8,
-      dragClickables: false,
-      onPress() {
-        progRef.current?.pause();
-        gsap.to(cursorRef.current, { scale: 0.8, duration: 0.2 });
-      },
-      onRelease() {
-        gsap.to(cursorRef.current, { scale: 1, duration: 0.2 });
-        const dx = this.x + indexRef.current * step; /* kitna kheencha */
-        let idx = indexRef.current;
-        if (Math.abs(dx) > step * 0.2) idx += dx < 0 ? 1 : -1;
-        idx = gsap.utils.clamp(0, max, idx);
+  //   const [drag] = Draggable.create(el, {
+  //     type: "x",
+  //     bounds: { minX: -max * step, maxX: 0 },
+  //     edgeResistance: 0.8,
+  //     dragClickables: false,
+  //     onPress() {
+  //       progRef.current?.pause();
+  //       gsap.to(cursorRef.current, { scale: 0.8, duration: 0.2 });
+  //     },
+  //     onRelease() {
+  //       gsap.to(cursorRef.current, { scale: 1, duration: 0.2 });
+  //       const dx = this.x + indexRef.current * step; /* kitna kheencha */
+  //       let idx = indexRef.current;
+  //       if (Math.abs(dx) > step * 0.2) idx += dx < 0 ? 1 : -1;
+  //       idx = gsap.utils.clamp(0, max, idx);
 
-        if (idx === indexRef.current) {
-          gsap.to(el, { x: -idx * step, duration: 0.6, ease: "power3.out" });
-          progRef.current?.paused(pausedRef.current);
-        } else {
-          setCurrentIndex(idx);
-        }
-      },
-    });
+  //       if (idx === indexRef.current) {
+  //         gsap.to(el, { x: -idx * step, duration: 0.6, ease: "power3.out" });
+  //         progRef.current?.paused(pausedRef.current);
+  //       } else {
+  //         setCurrentIndex(idx);
+  //       }
+  //     },
+  //   });
 
-    return () => drag.kill();
-  }, [visible]);
+  //   return () => drag.kill();
+  // }, [visible]);
 
   /* ---------- 6: AUTOPLAY + PROGRESS DOT (timer aur dot ek hi tween) ---------- */
   useEffect(() => {
@@ -483,33 +301,33 @@ const Gallery = () => {
   }, [paused]);
 
   /* ---------- 7: CUSTOM "DRAG" CURSOR ---------- */
-  useEffect(() => {
-    const wrap = wrapperRef.current;
-    const cur = cursorRef.current;
-    if (!wrap || !cur) return;
-    if (!window.matchMedia("(hover: hover)").matches || reduce) return;
+  // useEffect(() => {
+  //   const wrap = wrapperRef.current;
+  //   const cur = cursorRef.current;
+  //   if (!wrap || !cur) return;
+  //   if (!window.matchMedia("(hover: hover)").matches || reduce) return;
 
-    gsap.set(cur, { xPercent: -50, yPercent: -50, scale: 0, opacity: 0 });
-    const qx = gsap.quickTo(cur, "x", { duration: 0.35, ease: "power3.out" });
-    const qy = gsap.quickTo(cur, "y", { duration: 0.35, ease: "power3.out" });
+  //   gsap.set(cur, { xPercent: -50, yPercent: -50, scale: 0, opacity: 0 });
+  //   const qx = gsap.quickTo(cur, "x", { duration: 0.35, ease: "power3.out" });
+  //   const qy = gsap.quickTo(cur, "y", { duration: 0.35, ease: "power3.out" });
 
-    const move = (e) => {
-      const r = wrap.getBoundingClientRect();
-      qx(e.clientX - r.left);
-      qy(e.clientY - r.top);
-    };
-    const enter = () => gsap.to(cur, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" });
-    const leave = () => gsap.to(cur, { scale: 0, opacity: 0, duration: 0.25 });
+  //   const move = (e) => {
+  //     const r = wrap.getBoundingClientRect();
+  //     qx(e.clientX - r.left);
+  //     qy(e.clientY - r.top);
+  //   };
+  //   const enter = () => gsap.to(cur, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" });
+  //   const leave = () => gsap.to(cur, { scale: 0, opacity: 0, duration: 0.25 });
 
-    wrap.addEventListener("mousemove", move);
-    wrap.addEventListener("mouseenter", enter);
-    wrap.addEventListener("mouseleave", leave);
-    return () => {
-      wrap.removeEventListener("mousemove", move);
-      wrap.removeEventListener("mouseenter", enter);
-      wrap.removeEventListener("mouseleave", leave);
-    };
-  }, []);
+  //   wrap.addEventListener("mousemove", move);
+  //   wrap.addEventListener("mouseenter", enter);
+  //   wrap.addEventListener("mouseleave", leave);
+  //   return () => {
+  //     wrap.removeEventListener("mousemove", move);
+  //     wrap.removeEventListener("mouseenter", enter);
+  //     wrap.removeEventListener("mouseleave", leave);
+  //   };
+  // }, []);
 
   /* ---------- 3: TILT + GLARE ---------- */
   const tiltMove = (e) => {
@@ -621,14 +439,7 @@ const Gallery = () => {
                       <div className="title-mask">
                         <h3 className="title-inner">{project.title}</h3>
                       </div>
-                      <div className="plant-row">
-                        <span className="plant-label">Plant name :-</span>
-                        {project.plants.split(", ").map((p) => (
-                          <span className="chip" key={p}>
-                            ❧ {p}
-                          </span>
-                        ))}
-                      </div>
+                      
                     </div>
                   </div>
                 </div>
@@ -658,9 +469,7 @@ const Gallery = () => {
             &#10095;
           </button>
 
-          <div className="gal-cursor" ref={cursorRef} aria-hidden="true">
-            <span>Drag</span>
-          </div>
+          
         </div>
 
         <div className="projects-dots">

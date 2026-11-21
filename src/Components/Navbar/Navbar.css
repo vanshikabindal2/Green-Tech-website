@@ -44,10 +44,10 @@
 }
 
 .green-logo {
-  width: 68px;
+  width: 73px;
   height: 78px;
   flex-shrink: 0;
-  background: #f8f8f8;
+  /* background: #f8f8f8; */
 
   display: flex;
   align-items: center;
@@ -191,7 +191,7 @@
 
 .green-navigation {
   width: 100%;
-  min-height: 48px;
+  min-height: 45px;
 
   display: flex;
   align-items: center;

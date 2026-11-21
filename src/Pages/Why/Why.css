@@ -173,3 +173,17 @@
     transition: none;
   }
 }
+.why-section {
+  padding: 30px 24px 40px;     
+}
+@media (max-width: 600px) {
+  .why-section {
+    padding: 25px 18px 35px;
+  }
+}
+.gt-service-products {
+  padding-bottom: 20px;
+}
+.why-section {
+  padding-top: 10px;
+}

@@ -6,7 +6,6 @@
 // import { FiArrowUp, FiArrowRight, FiArrowUpRight, FiCheckCircle } from "react-icons/fi";
 // import "./Footer.css";
 
-// // Apne logo ka sahi path / naam yahan daalein
 // import logo from "../../assets/logo.png";
 
 // gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, useGSAP);
@@ -22,16 +21,19 @@
 // ];
 
 // const quickLinks = [
-//   { label: "Products", href: "#products" },
-//   { label: "Gallery", href: "#gallery" },
-//   { label: "Services", href: "#services" },
-//   { label: "Contact", href: "#contact" },
+//   { label: "Products", href: "/products" },
+//   { label: "Gallery", href: "/gallery" },
+//   { label: "Services", href: "/service" },
+//   { label: "Contact", href: "/contact" },
 // ];
 
-// const socials = [
-//   { name: "Facebook", href: "#" },
-//   { name: "LinkedIn", href: "#" },
-//   { name: "Instagram", href: "#" },
+// /* NEW: socials ki jagah services array */
+// const services = [
+//   { name: "Misting Systems", href: "/service" },
+//   { name: "High Pressure Fogging", href: "/service" },
+//   { name: "Dust Suppression", href: "/service" },
+//   { name: "Mist Cooling", href: "/service" },
+//   { name: "Outdoor Cooling", href: "/service" },
 // ];
 
 // const WORDMARK = "GreenTech".split("");
@@ -113,6 +115,22 @@
 //           ease: "power4.out",
 //           scrollTrigger: { trigger: ".wordmark", start: "top 98%", once: true },
 //         });
+
+//         // 5b) GreenTech apne aap dark/lime hota rahe (wave loop, bina hover ke)
+//         gsap
+//           .timeline({
+//             scrollTrigger: { trigger: ".wordmark", start: "top 98%", once: true },
+//             delay: 1.8, // letters upar uthne ke baad shuru
+//             repeat: -1,
+//             yoyo: true,
+//             repeatDelay: 0.8,
+//           })
+//           .to(".wm-char span", {
+//             color: "#b8e063",
+//             duration: 0.5,
+//             stagger: 0.18,
+//             ease: "sine.inOut",
+//           });
 
 //         return () => {
 //           strip.removeEventListener("mouseenter", slow);
@@ -242,7 +260,7 @@
 //           </div>
 
 //           <nav className="footer-col" aria-label="Quick links">
-//             <h4>Explore</h4>
+//             <h4>Quick Links</h4>
 //             <ul>
 //               {quickLinks.map((l) => (
 //                 <li key={l.label}>
@@ -255,12 +273,13 @@
 //             </ul>
 //           </nav>
 
-//           <nav className="footer-col" aria-label="Social media">
-//             <h4>Follow</h4>
+//           {/* REPLACED: socials -> services */}
+//           <nav className="footer-col" aria-label="Our services">
+//             <h4>Services</h4>
 //             <ul>
-//               {socials.map((s) => (
+//               {services.map((s) => (
 //                 <li key={s.name}>
-//                   <a href={s.href} target="_blank" rel="noreferrer" className="social-link">
+//                   <a href={s.href} className="social-link">
 //                     {s.name} <FiArrowUpRight />
 //                   </a>
 //                 </li>
@@ -324,7 +343,6 @@
 //           <div className="footer-legal">
 //             <a href="#privacy">Privacy</a>
 //             <a href="#terms">Terms</a>
-//             <a href="#sitemap">Sitemap</a>
 //           </div>
 
 //           <button type="button" className="to-top" onClick={scrollToTop} aria-label="Back to top">
@@ -337,16 +355,15 @@
 // };
 
 // export default Footer;
-
 import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useGSAP } from "@gsap/react";
 import { FiArrowUp, FiArrowRight, FiArrowUpRight, FiCheckCircle } from "react-icons/fi";
+import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import "./Footer.css";
 
-// Apne logo ka sahi path / naam yahan daalein
 import logo from "../../assets/logo.png";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, useGSAP);
@@ -368,12 +385,19 @@ const quickLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-const socials = [
-  { name: "Wall Design"},
-  { name: "Installation" },
-  { name: "Maintenance" },
-  { name: "Support" },
+const services = [
+  { name: "Misting Systems", href: "/service" },
+  { name: "High Pressure Fogging", href: "/service" },
+  { name: "Dust Suppression", href: "/service" },
+  { name: "Mist Cooling", href: "/service" },
+  { name: "Outdoor Cooling", href: "/service" },
+];
 
+/* apne asli links daalna */
+const socials = [
+  { name: "Instagram", href: "https://instagram.com", icon: FaInstagram },
+  { name: "Facebook", href: "https://facebook.com", icon: FaFacebookF },
+  { name: "LinkedIn", href: "https://linkedin.com/company", icon: FaLinkedinIn },
 ];
 
 const WORDMARK = "GreenTech".split("");
@@ -405,7 +429,7 @@ const Footer = () => {
         // 1) Marquee: infinite loop, hover par slow
         const marquee = gsap.to(".marquee-track", {
           xPercent: -50,
-          duration: 28,
+          duration: 45,
           ease: "none",
           repeat: -1,
         });
@@ -597,6 +621,21 @@ const Footer = () => {
             <a className="mail-link" href="mailto:rajeshkumarparbhat@gmail.com">
               rajeshkumarparbhat@gmail.com
             </a>
+
+            <div className="social-icons">
+              {socials.map(({ name, href, icon: Icon }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={name}
+                  className={`soc soc-${name.toLowerCase()}`}
+                >
+                  <Icon />
+                </a>
+              ))}
+            </div>
           </div>
 
           <nav className="footer-col" aria-label="Quick links">
@@ -613,12 +652,12 @@ const Footer = () => {
             </ul>
           </nav>
 
-          <nav className="footer-col" aria-label="Social media">
+          <nav className="footer-col" aria-label="Our services">
             <h4>Services</h4>
             <ul>
-              {socials.map((s) => (
+              {services.map((s) => (
                 <li key={s.name}>
-                  <a href={s.href} target="_blank" rel="noreferrer" className="social-link">
+                  <a href={s.href} className="social-link">
                     {s.name} <FiArrowUpRight />
                   </a>
                 </li>
@@ -682,7 +721,6 @@ const Footer = () => {
           <div className="footer-legal">
             <a href="#privacy">Privacy</a>
             <a href="#terms">Terms</a>
-            
           </div>
 
           <button type="button" className="to-top" onClick={scrollToTop} aria-label="Back to top">
@@ -694,4 +732,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer; 

@@ -577,6 +577,8 @@
 /* Word-by-word highlight */
 .gt-about-description .word {
   display: inline-block;
+    white-space: pre;
+
 }
 
 /* Leaf sway ke liye transform chalna chahiye */
@@ -608,4 +610,83 @@
 .gt-feature-check {
   display: inline-grid;
   place-items: center;
+}
+
+/* ===== GAP KAM KARNE KE LIYE ===== */
+
+/* Navbar aur "Our Story" ke beech */
+.gt-about {
+  padding-top: 40px;
+}
+
+/* Our Story badge */
+.gt-about-label {
+  margin-bottom: 10px;
+  padding: 9px 20px;
+  font-size: 16px;
+}
+
+/* About Our Company heading */
+.gt-about-heading h1 {
+  margin: 0 0 8px;
+}
+
+/* 14+ Years wali line */
+.gt-about-heading > p {
+  font-size: 17px;
+}
+
+/* Green line */
+.gt-heading-line {
+  margin: 15px auto 0;
+}
+
+/* Heading aur neeche ke content ke beech (sabse bada gap yahi hai) */
+.gt-about-heading {
+  margin-bottom: 35px;
+}
+
+/* Grid ko upar se align karo */
+.gt-about-grid {
+  align-items: start;
+  gap: 60px;
+}
+
+@media (max-width: 700px) {
+  .gt-about {
+    padding-top: 30px;
+  }
+  .gt-about-heading {
+    margin-bottom: 25px;
+  }
+}
+
+
+/* Feature check: hover par sirf zoom */
+.gt-feature-check {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.gt-feature-item:hover .gt-feature-check {
+  transform: scale(1.3);
+  background-color: #16a34a;
+}
+
+/* Neeche ka gap kam karne ke liye */
+.gt-about {
+  padding-bottom: 40px;
+}
+
+/* Button ke neeche extra space na rahe */
+.gt-about-button {
+  margin-bottom: 0;
+}
+
+.gt-about-right {
+  padding-bottom: 20px;
+}
+@media (max-width: 700px) {
+  .gt-about {
+    padding-bottom: 30px;
+  }
 }

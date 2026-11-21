@@ -1,4 +1,3 @@
-
 /* ==============================
    GET QUOTE PAGE
 ============================== */
@@ -6,7 +5,7 @@
 .gt-quote-page {
   width: 100%;
   min-height: 75vh;
-  padding: 70px 20px 90px;
+  padding: 60px 20px 80px;
   box-sizing: border-box;
   background: #ffffff;
 }
@@ -17,9 +16,9 @@
 
 .gt-quote-container {
   width: 100%;
-  max-width: 850px;
+  max-width: 640px; /* pehle 850px tha — ab chhota */
   margin: 0 auto;
-  padding: 45px 45px;
+  padding: 38px 36px;
   box-sizing: border-box;
 
   background: #ffffff;
@@ -35,13 +34,16 @@
 
 .gt-quote-header {
   text-align: center;
-  margin-bottom: 38px;
+  margin-bottom: 32px;
 }
 
-.gt-quote-icon {
+.gt-quote-logo {
   display: block;
-  font-size: 36px;
-  margin-bottom: 12px;
+  height: 70px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  margin: 0 auto 14px;
 }
 
 .gt-quote-label {
@@ -54,9 +56,9 @@
 
 .gt-quote-header h1 {
   color: #26382a;
-  font-size: 34px;
+  font-size: 32px;
   font-weight: 600;
-  margin: 12px 0;
+  margin: 10px 0;
 }
 
 .gt-quote-header p {
@@ -74,16 +76,22 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 23px;
+  gap: 20px;
 }
 
-/* Individual Form Fields */
+/* ek row mein do fields */
+.gt-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
 
 .gt-form-group {
   width: 100%;
+  min-width: 0; /* grid mein input overflow na kare */
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 8px;
 }
 
 .gt-form-group label {
@@ -103,7 +111,7 @@
   width: 100%;
   box-sizing: border-box;
 
-  padding: 15px 16px;
+  padding: 14px 16px;
 
   border: 1px solid #dce3dc;
   border-radius: 8px;
@@ -116,27 +124,27 @@
 
   background: #ffffff;
 
-  transition: all 0.25s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .gt-form-group input {
-  min-height: 52px;
+  min-height: 50px;
 }
 
+/* Description: chota start, JS se height badhti hai */
 .gt-form-group textarea {
-  min-height: 150px;
-  resize: vertical;
+  min-height: 50px;
+  line-height: 1.5;
+  resize: none;
+  overflow-y: hidden;
+  display: block;
 }
-
-/* Input Focus */
 
 .gt-form-group input:focus,
 .gt-form-group textarea:focus {
   border-color: #7db680;
   box-shadow: 0 0 0 3px rgba(125, 182, 128, 0.12);
 }
-
-/* Placeholder */
 
 .gt-form-group input::placeholder,
 .gt-form-group textarea::placeholder {
@@ -149,9 +157,8 @@
 
 .gt-submit-button {
   width: 100%;
-  min-height: 54px;
-
-  padding: 15px 20px;
+  min-height: 52px;
+  padding: 14px 20px;
 
   border: none;
   border-radius: 8px;
@@ -169,7 +176,7 @@
   align-items: center;
   gap: 10px;
 
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .gt-submit-button:hover {
@@ -184,7 +191,7 @@
 }
 
 /* ==============================
-   FORM MESSAGE
+   FORM MESSAGE (error)
 ============================== */
 
 .gt-form-message {
@@ -199,46 +206,129 @@
 }
 
 /* ==============================
-   SUCCESS MESSAGE
+   THANK YOU POPUP (auto hide)
 ============================== */
 
-.gt-success-message {
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.gt-success-icon {
-  width: 70px;
-  height: 70px;
-
-  margin: 0 auto 20px;
-
-  background: #e4f5e5;
-  color: #5caa65;
-
-  border-radius: 50%;
-
+.gt-thanks-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
   display: flex;
-  justify-content: center;
   align-items: center;
-
-  font-size: 36px;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(20, 40, 25, 0.45);
+  backdrop-filter: blur(3px);
+  animation: gtFadeIn 0.3s ease forwards;
 }
 
-.gt-success-message h2 {
+.gt-thanks-overlay.closing {
+  animation: gtFadeOut 0.4s ease forwards;
+}
+
+.gt-thanks-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding: 38px 30px 34px;
+  box-sizing: border-box;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: gtPopIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.gt-thanks-overlay.closing .gt-thanks-card {
+  animation: gtPopOut 0.4s ease forwards;
+}
+
+.gt-thanks-check {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 18px;
+}
+
+.gt-thanks-check svg {
+  width: 100%;
+  height: 100%;
+}
+
+.gt-thanks-circle {
+  fill: #e4f5e5;
+  stroke: #5caa65;
+  stroke-width: 2;
+  stroke-dasharray: 151;
+  stroke-dashoffset: 151;
+  animation: gtDraw 0.6s ease 0.15s forwards;
+}
+
+.gt-thanks-tick {
+  fill: none;
+  stroke: #5caa65;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: gtDraw 0.4s ease 0.65s forwards;
+}
+
+.gt-thanks-card h2 {
+  margin: 0 0 8px;
   color: #376d3d;
-  font-size: 30px;
+  font-size: 28px;
 }
 
-.gt-success-message p {
+.gt-thanks-card p {
+  margin: 0;
   color: #666;
+  font-size: 15px;
   line-height: 1.7;
-  margin-bottom: 30px;
 }
 
-.gt-success-message .gt-submit-button {
-  max-width: 300px;
-  margin: 0 auto;
+/* neeche ki patli bar: auto-close ka countdown */
+.gt-thanks-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  background: #7db680;
+  transform-origin: left;
+  animation-name: gtProgress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes gtFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes gtFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes gtPopIn {
+  from { opacity: 0; transform: scale(0.7) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes gtPopOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.9) translateY(10px); }
+}
+
+@keyframes gtDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes gtProgress {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
 }
 
 /* ==============================
@@ -258,30 +348,25 @@
 ============================== */
 
 @media (max-width: 768px) {
-
   .gt-quote-page {
-    padding: 45px 20px 60px;
+    padding: 40px 20px 60px;
   }
 
   .gt-quote-container {
-    padding: 32px 25px;
+    padding: 30px 24px;
     border-radius: 12px;
   }
 
   .gt-quote-header {
-    margin-bottom: 30px;
+    margin-bottom: 26px;
   }
 
   .gt-quote-header h1 {
-    font-size: 28px;
+    font-size: 27px;
   }
 
   .gt-quote-header p {
     font-size: 14px;
-  }
-
-  .gt-quote-form {
-    gap: 20px;
   }
 
   .gt-form-group input,
@@ -304,23 +389,29 @@
    MOBILE RESPONSIVE
 ============================== */
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
+  /* mobile par Name/Email upar-neeche */
+  .gt-form-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
 
+@media (max-width: 480px) {
   .gt-quote-page {
-    padding: 35px 15px 50px;
+    padding: 30px 15px 50px;
   }
 
   .gt-quote-container {
-    padding: 25px 17px;
-    border-radius: 12px;
+    padding: 24px 16px;
+  }
+
+  .gt-quote-logo {
+    height: 58px;
   }
 
   .gt-quote-header h1 {
-    font-size: 25px;
-  }
-
-  .gt-quote-icon {
-    font-size: 30px;
+    font-size: 24px;
   }
 
   .gt-quote-header p {
@@ -331,11 +422,17 @@
     font-size: 14px;
   }
 
-  .gt-form-group textarea {
-    min-height: 120px;
+  .gt-thanks-card {
+    padding: 32px 20px 28px;
   }
+}
 
-  .gt-success-message {
-    padding: 35px 10px;
+@media (prefers-reduced-motion: reduce) {
+  .gt-thanks-overlay,
+  .gt-thanks-card,
+  .gt-thanks-circle,
+  .gt-thanks-tick {
+    animation-duration: 0.01s;
+    animation-delay: 0s;
   }
 }

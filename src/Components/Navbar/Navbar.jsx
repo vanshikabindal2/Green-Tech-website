@@ -61,7 +61,7 @@ const Navbar = () => {
           </a>
 
           <a
-            href="mailto:info@greentechsolution.com"
+            href="mailto:rajeshkumarparbhat@gmail.com"
             className="green-email-btn"
           >
             <FiMail />
@@ -88,10 +88,11 @@ const Navbar = () => {
         <div className="green-nav-links">
 
           <Link to="/" onClick={closeMenu}>Home</Link>
-          <Link to="/about" onClick={closeMenu}>About</Link>
+          
           <Link to="/products" onClick={closeMenu}>Products</Link>
           <Link to="/service" onClick={closeMenu}>Service</Link>
           <Link to="/gallery" onClick={closeMenu}>Gallery</Link>
+          <Link to="/about" onClick={closeMenu}>About</Link>
           <Link to="/contact" onClick={closeMenu}>Contact</Link>
 
         </div>

@@ -518,8 +518,6 @@ const About = () => {
                   <div
                     className="gt-feature-item"
                     key={index}
-                    onMouseEnter={featIn}
-                    onMouseLeave={featOut}
                   >
                     <span className="gt-feature-check">
                       <FiCheck />

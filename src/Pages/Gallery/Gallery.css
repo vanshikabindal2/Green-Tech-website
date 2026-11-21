@@ -421,9 +421,48 @@
     display: none;
   }
 }
+/* ===== GAP KAM KARNE KE LIYE ===== */
+
+.projects-section {
+  padding: 40px 0 50px;        /* pehle 100px 0 80px */
+}
+
+.projects-heading {
+  margin-bottom: 30px;         /* pehle 85px, sabse bada gap yahi hai */
+}
+
+.projects-heading h1 {
+  margin: 0 0 12px;            /* pehle 0 0 25px */
+}
+
+.projects-slider-window {
+  padding: 10px 0 20px;        /* pehle 20px 0 30px */
+}
+
+.projects-dots {
+  margin-top: 20px;            /* pehle 35px */
+}
 
 
 
+@media (max-width: 600px) {
+  .projects-section {
+    padding: 30px 0 40px;
+  }
+  .projects-heading {
+    margin-bottom: 25px;
+  }
+}
 
+/* Project title aur plant chips center mein */
+.project-info {
+  text-align: center;
+}
 
+.title-inner {
+  text-align: center;
+}
 
+.plant-row {
+  justify-content: center;
+}

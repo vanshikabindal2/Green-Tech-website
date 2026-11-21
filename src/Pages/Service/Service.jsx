@@ -400,10 +400,10 @@ const Service = () => {
             </p>
           </div>
 
-          <div className="gt-product-count">
+          {/* <div className="gt-product-count">
             <span>{String(filteredServices.length).padStart(2, "0")}</span>
             <small>Available Solutions</small>
-          </div>
+          </div> */}
         </div>
 
         <div className="gt-service-grid">

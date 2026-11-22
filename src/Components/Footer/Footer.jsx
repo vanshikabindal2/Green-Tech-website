@@ -723,9 +723,9 @@ const Footer = () => {
             <a href="#terms">Terms</a>
           </div>
 
-          <button type="button" className="to-top" onClick={scrollToTop} aria-label="Back to top">
+          {/* <button type="button" className="to-top" onClick={scrollToTop} aria-label="Back to top">
             <FiArrowUp />
-          </button>
+          </button> */}
         </div>
       </div>
     </footer>
